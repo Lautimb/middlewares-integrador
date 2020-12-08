@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Editando'}) %>
+<body>
+	<!-- Header -->
+	<%- include('../partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Estás editando: <i><%= productToEdit.name %></i></h2>
+			</div>
+		</div>
+		<div class="col-12">
+			<form action="/products/edit/<%= productToEdit.id %>?_method=PUT" enctype="multipart/form-data" method="POST" >
+				<div class="row product-detail">
+					<div class="col-12 col-md-6">
+						<label for="name" class="form-label">Nombre del producto:</label>
+						<input type="text" id="name" name="name" value="<%= productToEdit.name %>" class="form-input">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="price" class="form-label">Precio del producto:</label>
+						<input type="text" id="price" name="price" value="<%= productToEdit.price %>" class="form-input">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="discount" class="form-label">Descuento:</label>
+						<input type="text" id="discount" name="discount" value="<%= productToEdit.discount %>" class="form-input">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="category" class="form-label">Categoría:</label>
+						<select name="category" id="category" class="form-input">
+							<option value="" disabled>Elegi</option>
+							<option value="in-sale">En oferta</option>
+							<option value="visited" >Últimos agregados</option>
+						</select>
+					</div>
+					<div class="col-12">
+						<label for="description" class="form-label">Descripción:</label>
+						<textarea name="description" id="description" class="form-input" placeholder="<%= productToEdit.description %>"><%= productToEdit.description %></textarea>
+					</div>
+					<div class="col-12">
+						<label for="image">Imagen</label>
+						<input type="file" name="image">
+					</div>
+					<div class="col-12">
+						<button type="submit" class="buy-now-button">Guardar producto</button>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+
+	</div>
+	<!-- /todos los productos -->
+
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>

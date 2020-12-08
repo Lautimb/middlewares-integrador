@@ -1,1 +1,23 @@
-[]
+[
+ {
+  "id": 0
+ },
+ {
+  "id": 1,
+  "email": "lautaro1@gmail.com",
+  "password": "$2a$12$qmijz6PWKLQTb2skDhc06us7hE.hv8UXtjgR4XjtQIKTpEm3RtDf6",
+  "avatar": "160642374936324698_1318212387621_346281_n.jpg"
+ },
+ {
+  "id": 2,
+  "email": "horacio@gmail.com",
+  "password": "$2a$12$dbu7iNyvrQPVudTHBs0nter6BBqJjWLxpsYP2/EYhebNPtR.lsEaS",
+  "avatar": "1606527227941screen-code-coding-programming.jpg"
+ },
+ {
+  "id": 3,
+  "email": "hola@gmail.com",
+  "password": "$2a$12$Os3gj1or1B2smAn19W6mg.6WxGPS./9y7Wd2PJXAxY4AUtlWjKNe6",
+  "avatar": "1606673447133-2695 (2).jpg"
+ }
+]

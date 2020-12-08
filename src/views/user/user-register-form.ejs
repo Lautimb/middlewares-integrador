@@ -12,12 +12,27 @@
 			<div class="col-12">
 				<h2 class="products-title">Registro</h2>
 			</div>
+
+			<% if (typeof errors != 'undefined') { %>
+			
+			<ul class="col-12">
+				<% for (let i=0; i < errors.length; i++) { %>
+					<p> <%= errors[i].msg %> </p>
+				<% } %>
+			</ul>
+			
+			<% } %>
+
 			<div class="col-6">
 				<form action="/user/register" method="POST" enctype="multipart/form-data">
 					<div class="row product-detail">
 						<div class="col-12">
 							<label for="email" class="form-label">Email: *</label>
-							<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
+							<% if(typeof email != 'undefined') { %>
+								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="<%= email %>">
+							<%}else {%>
+								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
+							<% } %>
 						</div>
 						<div class="col-12 row">
 							<label for="image" class="form-label col-12">Avatar:</label>
