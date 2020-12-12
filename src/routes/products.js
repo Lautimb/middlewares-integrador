@@ -17,7 +17,6 @@ const upload = multer({ storage,
     fileFilter: (req, file, cb)=>{
         const acceptedExt = ['.jpg','.png','.jpeg','.webp']
         const ext = path.extname(file.originalname);
-        
         if(!acceptedExt.includes(ext)){
             req.file = file;
         }

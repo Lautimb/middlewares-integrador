@@ -19,5 +19,17 @@
   "email": "hola@gmail.com",
   "password": "$2a$12$Os3gj1or1B2smAn19W6mg.6WxGPS./9y7Wd2PJXAxY4AUtlWjKNe6",
   "avatar": "1606673447133-2695 (2).jpg"
+ },
+ {
+  "id": 4,
+  "email": "skere@gmail.com",
+  "password": "$2a$10$BpeMWQPM/EIIVaJ2PZOp7O4sUOpEeUz2kIFGl0cpSGs4BltyjfZja",
+  "avatar": "1607572269265-logo1.png"
+ },
+ {
+  "id": 5,
+  "email": "dale@gmail.com",
+  "password": "$2a$10$eVeE6buPyvyHcjuR1.RBluP4qpcaDDkLJSk6cK9HTBdph4Vlg0oXC",
+  "avatar": "1607796939194-logo1.png"
  }
 ]

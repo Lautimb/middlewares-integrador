@@ -3,6 +3,9 @@ const router = express.Router();
 const path = require('path');
 const multer  = require('multer')
 
+const userController = require('../controllers/userController');
+const validator = require('../middlewares/validator');
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
       cb(null, path.join('public/images/users'))
@@ -24,8 +27,7 @@ const upload = multer({ storage,
   }
 })
 
-const userController = require('../controllers/userController');
-const validator = require('../middlewares/validator');
+
 
 // Muestra la vista de registro
 router.get('/register', userController.showRegister);
@@ -37,7 +39,7 @@ router.post('/register', upload.single('avatar'), validator.register,  userContr
 router.get('/login', userController.showLogin);
 
 // Procesa la vista de login
-router.post('/login', userController.processLogin);
+router.post('/login', validator.login, userController.processLogin);
 
 // Muestra el perfil del usuario
 router.get('/profile', userController.showProfile);
