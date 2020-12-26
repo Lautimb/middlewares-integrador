@@ -22,11 +22,11 @@ router.get('/sales', productsController.sales)
 router.get('/detail/:id', productsController.detail); // http://localhost:3000/products/detail/6
 
 /*** EDIT ONE PRODUCT ***/
-router.get('/edit/:id', productsController.edit);
+router.get('/edit/:id', auth, productsController.edit);
 router.put('/edit/:id', multerProducts.any(), productsController.update);
 
 /*** DELETE ONE PRODUCT***/
-router.delete('/delete/:id', productsController.destroy);
+router.delete('/delete/:id', auth, productsController.destroy);
 
 
 module.exports = router;
