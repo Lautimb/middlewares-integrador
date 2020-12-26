@@ -4,7 +4,7 @@
   "name": "Macbook Pro 2022",
   "price": "500",
   "discount": "3",
-  "category": "in-sale",
+  "category": "visited",
   "description": "Macbook Pro 2019 Mpxq2ll/a Intel Core i5 2.3 Ghz 8gb RAM 128gb SSD Pantalla 13.3\" Retina Apple Nueva Original. Importada de USA. Se entrega con la factura de compra para contar con la garantía del fabricante",
   "image": "1606670605145-2695 (2).jpg"
  },
@@ -30,8 +30,8 @@
   "id": 5,
   "name": "Nikon Reflex D3500 - Kit",
   "description": "Incluye la cámara D3500, el objetivo zoom AF-P DX NIKKOR 18-55mm y el superteleobjetivo zoom compacto AF-P DX NIKKOR 70-300mm. Ambos objetivos enfocan de forma rápida y silenciosa, lo que resulta ideal para grabar metraje de vídeo sin que se escuche apenas el ruido del accionamiento.",
-  "price": 53000,
-  "discount": 20,
+  "price": "53000",
+  "discount": "20",
   "image": "img-camara-nikon.jpg",
   "category": "visited"
  },
@@ -84,10 +84,10 @@
   "id": 11,
   "name": "Parlante Inalámbrico Bose Soundtouch 10",
   "description": "Parlante Inalámbrico Bose Soundtouch 10. SoundTouch®.La manera más sencilla de reproducir música en todo su hogar de forma inalámbrica. Características. » Marca: Bose. » Modelo: SoundTouch. » Color: Negro",
-  "price": 29990,
-  "discount": 12,
+  "price": "29990",
+  "discount": "12",
   "image": "img-parlante-bose.jpg",
-  "category": "in-sale"
+  "category": "visited"
  },
  {
   "id": 12,
@@ -102,17 +102,17 @@
   "id": 13,
   "name": "Smart TV Samsung 4K 50",
   "description": "Con el Smart TV Samsung UN50MU6100, viví una nueva experiencia visual con la resolución 4K, que te presentará imágenes con gran detalle y de alta calidad. Ahora todo lo que veas cobrará vida con brillo y colores más reales. Gracias a su tamaño de 50\", podrás transformar tu espacio en una sala de cine y transportarte a donde quieras.",
-  "price": 34990,
-  "discount": 0,
+  "price": "34990",
+  "discount": "0",
   "image": "img-tv-samsung-smart.jpg",
   "category": "in-sale"
  },
  {
   "id": 14,
-  "name": "Sony S6700 Reproductor De Blu-ray ",
+  "name": "Reproductor de pelis",
   "description": "Disfruta de tus películas favoritas con hasta cuatro veces más detalles que Full HD, gracias a la conversión de señales 4K. Cuando se conecta a un televisor compatible,un procesador de video avanzado convierte el video estándar en una señal cercana a la resolución 4K (3840 x 2160). Con ocho millones de píxeles, obtendrás imágenes más nítidas y detalladas, y la mayor calidad de la image te permite sentarte más cerca de la pantalla para que te sientas como en el cine.",
-  "price": 10999,
-  "discount": 5,
+  "price": "10999",
+  "discount": "5",
   "image": "img-sony-blueray.jpg",
   "category": "in-sale"
  },
