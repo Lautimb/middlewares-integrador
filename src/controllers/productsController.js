@@ -62,6 +62,7 @@ module.exports = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
+		
 		const products = helpers.getAllDataBase('products.json');
 		const id = req.params.id;
 		const result = products.find((product) => {
@@ -69,7 +70,7 @@ module.exports = {
 		})
 
 		res.render('products/product-edit-form',{
-			productToEdit: result
+			old: result
 		})
 		
 	},
@@ -86,11 +87,16 @@ module.exports = {
 		4) lo editamos
 		5) lo guardamos en la base de datos todo el array de productos
 		*/
-
-
-		const products = helpers.getAllDataBase('products.json');
 		const id = req.params.id;
-	
+		const result = validationResult(req)
+		if(!result.isEmpty()){
+			return res.render('products/product-edit-form', {
+				errors : result.mapped(),
+				old : req.body,
+				id
+			})
+		}
+		const products = helpers.getAllDataBase('products.json');
 		const editedProducts = products.map(function(product){
 			if (product.id == id){
 				product.name = req.body.name

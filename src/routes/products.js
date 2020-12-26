@@ -4,7 +4,7 @@ const router = express.Router();
 const validator = require('../middlewares/validator')
 const multerProducts = require('../middlewares/multer/products')
 const auth = require('../middlewares/auth');
-const guest = require('../middlewares/guest');
+
 
 
 // ************ Controller Require ************
@@ -23,7 +23,7 @@ router.get('/detail/:id', productsController.detail); // http://localhost:3000/p
 
 /*** EDIT ONE PRODUCT ***/
 router.get('/edit/:id', auth, productsController.edit);
-router.put('/edit/:id', multerProducts.any(), productsController.update);
+router.put('/edit/:id', multerProducts.any(), validator.productsUp, productsController.update);
 
 /*** DELETE ONE PRODUCT***/
 router.delete('/delete/:id', auth, productsController.destroy);

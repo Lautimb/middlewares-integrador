@@ -25,6 +25,9 @@ module.exports = {
                 .bail(),
         body('image')
             .custom((value , {req}) =>{
+                if(req.method == 'PUT'){
+                    return true
+                }
                 return req.file
             })
                 .withMessage('Imagen obligatoria')
