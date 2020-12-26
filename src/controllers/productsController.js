@@ -1,5 +1,5 @@
 const helpers = require('../helpers/dataBase');
-
+const { validationResult } = require('express-validator')
 module.exports = {
 	// Root - Show all products
 	index: (req, res) => {
@@ -35,6 +35,13 @@ module.exports = {
 
 	// Create -  Method to store
 	store: (req, res, next) => {
+		const result = validationResult(req)
+		if(!result.isEmpty()){
+			return res.render('products/product-create-form', {
+				errors : result.mapped(),
+				old : req.body
+			})
+		}
 		const newProduct = {
 			id: helpers.generateId('products.json'),
 			name: req.body.name,

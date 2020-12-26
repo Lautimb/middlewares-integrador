@@ -4,10 +4,47 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 
 module.exports = { 
+    
+    productsUp: [
+        body('name')
+            .notEmpty()
+                .withMessage('Ingrese un nombre')
+                .bail(),
+        body('discount')
+        .custom((value)=>{
+            if(value == false || (value > 0 && value < 100)){
+                return true
+            }
+            return false;
+        })
+            .withMessage('El descuento no puede ser mayor a 100')
+            .bail(),
+        body('price')
+            .isInt({min:1})
+                .withMessage('El precio debe ser un número mayor a 0')
+                .bail(),
+        body('image')
+            .custom((value , {req}) =>{
+                return req.file
+            })
+                .withMessage('Imagen obligatoria')
+                .bail()
+            .custom((value, {req})=>{
+                console.log(req.file)
+                if(req.file != undefined){
+                    const ext = path.extname(req.file.originalname)
+                    const acceptedExt = ['.jpg','.png','.jpeg','.webp']
+                    return acceptedExt.includes(ext)
+                }
+                return true;       
+            })       
+                .withMessage('Formato de archivo no válido')
+    ],
+
     register: [
         body('email')
-            .notEmpty().
-                withMessage('El campo email es obligatorio')
+            .notEmpty()
+                .withMessage('El campo email es obligatorio')
                 .bail()
             .isEmail()
                 .withMessage('Ingrese un email válido')
@@ -48,8 +85,8 @@ module.exports = {
             .custom((value, { req })=>{
                 return value == req.body.retype
             })
-                .withMessage('Las contraseñas deben ser iguales'),
-
+                .withMessage('Las contraseñas deben ser iguales')
+                .bail(),
         body('retype')
             .notEmpty()
                 .withMessage('El campo repetir contraseña es obligatorio')

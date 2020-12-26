@@ -14,28 +14,26 @@
 				<h2 class="products-title">Login</h2>
 			</div>
 			<div class="col-6"> 
-				<% if (typeof errors != 'undefined') { %>
-			
-					<ul class="col-12">
-						<% for (error of errors.errors) { %>
-							<p> <%= error.msg %> </p>
-						<% } %>
-					</ul>
-					
-				<% } %>
+				
 				<form action="/user/login/" method="POST">
 					<div class="row product-detail">
 						<div class="col-12">
 							<label for="email" class="form-label">Email:</label>
-							<% if(typeof email != 'undefined') { %>
+							<% if(typeof errors != 'undefined') { %>
 								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="<%= email %>">
+								<small class="errors-form ml-3"><%= typeof errors.email == 'undefined' ? '' : errors.email.msg %></small>
 							<%}else {%>
 								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
 							<% } %>
 						</div>
 						<div class="col-12">
 							<label for="price" class="form-label">Contraseña:</label>
-							<input type="password" id="password" name="password" class="form-input">
+							<% if(typeof errors != 'undefined') { %>
+								<input type="password" id="password" name="password" class="form-input">
+								<small class="errors-form ml-5"><%= typeof errors.password == 'undefined' ? '' : errors.password.msg %></small>
+							<%}else {%>
+								<input type="password" id="password" name="password" class="form-input">
+							<% } %>
 						</div>
 						<div class="col-12">
 							<label for="remember" class="form-label">Recuérdame</label>

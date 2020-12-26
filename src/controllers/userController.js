@@ -13,12 +13,11 @@ module.exports = {
         if(!results.isEmpty()){
             
             return res.render('user/user-register-form', {
-                errors : results.errors,
+                errors : results.mapped(),
                 email : req.body.email
             })
         }
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-
         const newUser = {
             id: helpers.generateId('users.json'),
             email: req.body.email,
@@ -29,7 +28,7 @@ module.exports = {
         const usersToSave = [...allUsers, newUser];
         helpers.writeNewDataBase(usersToSave,'users.json');
 
-        return res.redirect('/');
+        return res.redirect('/user/login');
     },
     showLogin: (req,res) => {
        res.render('user/user-login-form');
@@ -39,7 +38,7 @@ module.exports = {
         
         if(!results.isEmpty()){
             return res.render('user/user-login-form',{
-                errors : results,
+                errors : results.mapped(),
                 email: req.body.email
             })
         }
@@ -59,8 +58,11 @@ module.exports = {
         return res.render('user/profile');
     },
     logout: (req, res) => {
-     
-        return res.redirect('/');
+        req.session.destroy(()=>{
+            req.session = null;
+            res.cookie('user', null, {maxAge: 0});
+            res.redirect('/');
+        });
     }
 
 }

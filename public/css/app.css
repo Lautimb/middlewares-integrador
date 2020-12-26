@@ -63,6 +63,10 @@ hr {
   border: none;
   border-bottom: solid 1px var(--light-gray);
 }
+.errors-form{
+  font-size: 15px;
+  color: red;
+}
 
 
 /*====== Main Header ======*/
