@@ -4,19 +4,32 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-const methodOverride = require('method-override'); // Pasar poder usar los métodos PUT y DELETE
+const setLocals = require('./middlewares/setLocals');
+const methodOverride = require('method-override'); // Para poder usar los métodos PUT y DELETE
+const session = require('express-session');
+const log = require('./middlewares/log');
 
 // ************ express() - (don't touch) ************
 const app = express();
 
 
 // ************ Middlewares - (don't touch) ************
+
 app.use(express.static(path.join(__dirname, '../public')));  // Necesario para los archivos estáticos en el folder /public
 app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({
+  secret: 'Lapalabra',
+  resave: true,
+  saveUninitialized: true
+}));
+
 app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
+
+app.use(log);
+app.use(setLocals);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
@@ -27,11 +40,12 @@ app.set('views', path.join(__dirname, '/views')); // Define la ubicación de la 
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main'); // Rutas main ==> /
 const userRouter = require('./routes/user'); // Rutas /user
-const productsRouter = require('./routes/products') // Rutas /products
+const productsRouter = require('./routes/products'); // Rutas /products
 
 app.use('/', mainRouter);
 app.use('/user', userRouter);
-app.use('/products', productsRouter)
+app.use('/products', productsRouter);
+
 
 
 // ************ DON'T TOUCH FROM HERE ************

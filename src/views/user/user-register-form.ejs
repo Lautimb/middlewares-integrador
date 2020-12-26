@@ -12,39 +12,45 @@
 			<div class="col-12">
 				<h2 class="products-title">Registro</h2>
 			</div>
-
-			<% if (typeof errors != 'undefined') { %>
-			
-			<ul class="col-12">
-				<% for (let i=0; i < errors.length; i++) { %>
-					<p> <%= errors[i].msg %> </p>
-				<% } %>
-			</ul>
-			
-			<% } %>
-
+		
 			<div class="col-6">
 				<form action="/user/register" method="POST" enctype="multipart/form-data">
 					<div class="row product-detail">
 						<div class="col-12">
 							<label for="email" class="form-label">Email: *</label>
-							<% if(typeof email != 'undefined') { %>
+							<% if(typeof errors != 'undefined') { %>
 								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="<%= email %>">
+								<small class="errors-form ml-3"><%= typeof errors.email == 'undefined' ? '' : errors.email.msg %></small>
 							<%}else {%>
 								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
 							<% } %>
 						</div>
 						<div class="col-12 row">
 							<label for="image" class="form-label col-12">Avatar:</label>
-							<input type="file" id="image" name="avatar" class="form-file col-12">
+							<% if (typeof errors != 'undefined'){ %>
+								<input type="file" id="image" name="avatar" class="form-file col-12">
+								<small class="errors-form ml-5"><%= typeof errors.avatar == 'undefined' ? '' : errors.avatar.msg %></small>
+							<% }else{ %>
+								<input type="file" id="image" name="avatar" class="form-file col-12">
+							<% } %>
 						</div>
 						<div class="col-12">
 							<label for="password" class="form-label">Contraseña: *</label>
-							<input type="password" id="password" name="password" class="form-input">
+							<% if (typeof errors != 'undefined'){ %>
+								<input type="password" id="password" name="password" class="form-input">
+								<small class="errors-form ml-4"><%= typeof errors.password == 'undefined' ? '' : errors.password.msg %></small>
+							<% }else{ %>
+								<input type="password" id="password" name="password" class="form-input">
+							<% } %>
 						</div>
 						<div class="col-12">
 							<label for="retype" class="form-label">Repite la contraseña: *</label>
-							<input type="password" id="retype" name="retype" class="form-input">
+							<% if (typeof errors != 'undefined'){ %>
+								<input type="password" id="retype" name="retype" class="form-input">
+								<small class="errors-form ml-4"><%= typeof errors.retype == 'undefined' ? '' : errors.retype.msg %></small>
+							<% }else{ %>
+								<input type="password" id="retype" name="retype" class="form-input">
+							<% } %>
 						</div>
 						<div class="mt-5 col-12">
 							<button type="submit" class="buy-now-button">Registrarse</button>

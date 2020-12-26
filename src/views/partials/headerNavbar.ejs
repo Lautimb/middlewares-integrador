@@ -36,10 +36,14 @@
 			</ul>
 			
 			<ul class="right-navbar">
-				<li><a href="/user/profile">example@example.com <i class="fas fa-user"></i></a></li>
-				<li><a href="/user/logout">Cerrar sesión <i class="fas fa-sign-in-alt"></i></a></li>
-				<li><a href="/user/register">Registrate <i class="far fa-address-card"></i></a></li>
-				<li><a href="/user/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
+				<% if(!userLog){ %>
+					<li><a href="/user/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
+					<li><a href="/user/register">Registrate <i class="far fa-address-card"></i></a></li>
+				<% } else { %>	
+					<li><a href="/user/profile"><%= userLog.email %> <i class="fas fa-user"></i></a></li>
+					<li><a href="/user/logout">Cerrar sesión<i class="fas fa-sign-in-alt"></i></a></li>
+				<% } %>
+
 			</ul>
 		</nav>
 	</div>
