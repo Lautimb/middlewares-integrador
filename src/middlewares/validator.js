@@ -11,18 +11,16 @@ module.exports = {
                 .withMessage('Ingrese un nombre')
                 .bail(),
         body('discount')
-        .custom((value)=>{
-            if(value == false || (value > 0 && value < 100)){
-                return true
-            }
-            return false;
-        })
-            .withMessage('El descuento no puede ser mayor a 100')
-            .bail(),
+            .custom((value)=>{
+                if(value == false || (value > 0 && value < 100)){
+                    return true
+                }
+                return false;
+            })
+                .withMessage('El descuento no puede ser mayor a 100'),
         body('price')
             .isInt({min:1})
-                .withMessage('El precio debe ser un número mayor a 0')
-                .bail(),
+                .withMessage('El precio debe ser un número mayor a 0'),
         body('image')
             .custom((value , {req}) =>{
                 if(req.method == 'PUT'){
@@ -38,8 +36,7 @@ module.exports = {
                     const ext = path.extname(req.file.originalname)
                     const acceptedExt = ['.jpg','.png','.jpeg','.webp']
                     return acceptedExt.includes(ext)
-                }
-                return true;       
+                }      
             })       
                 .withMessage('Formato de archivo no válido')
     ],
@@ -66,17 +63,13 @@ module.exports = {
                 .withMessage('Imagen obligatoria')
                 .bail()
             .custom((value, { req })=>{
-                if(!req.file != undefined){
+                if(req.file != undefined){
                     const ext = path.extname(req.file.originalname)
                     const acceptedExt = ['.jpg','.png','.jpeg','.webp']
                     return acceptedExt.includes(ext)
                 }
-                
-                return false;
-
             })
-                .withMessage('Formatos de imagenes válidos jpg , png, jpeg o webp')
-                .bail(),
+                .withMessage('Formatos de imagenes válidos jpg , png, jpeg o webp'),
 
         body('password')
             .notEmpty()
@@ -88,12 +81,10 @@ module.exports = {
             .custom((value, { req })=>{
                 return value == req.body.retype
             })
-                .withMessage('Las contraseñas deben ser iguales')
-                .bail(),
+                .withMessage('Las contraseñas deben ser iguales'),
         body('retype')
             .notEmpty()
                 .withMessage('El campo repetir contraseña es obligatorio')
-                .bail(),
     ],
 
     login:[ 
@@ -121,7 +112,6 @@ module.exports = {
                 return bcrypt.compareSync(req.body.password, userFound.password)
             })
                 .withMessage('Contraseña incorrecta')
-        
     ]
 
 }
