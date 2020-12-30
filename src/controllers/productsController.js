@@ -49,7 +49,7 @@ module.exports = {
 			discount: req.body.discount,
 			category: req.body.category,
 			description: req.body.description,
-			image: req.files[0].filename
+			image: req.file.filename
 		}
 
 		const products = helpers.getAllDataBase('products.json');
@@ -104,7 +104,7 @@ module.exports = {
 				product.discount = req.body.discount
 				product.category = req.body.category
 				product.description = req.body.description
-				product.image = req.files[0] ? req.files[0].filename : product.image
+				product.image = req.file ? req.file.filename : product.image
 			}
 			return product
 		})

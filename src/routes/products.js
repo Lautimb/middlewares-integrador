@@ -15,15 +15,15 @@ router.get('/', productsController.index);
 
 /*** CREATE ONE PRODUCT ***/
 router.get('/create', auth, productsController.create);
-router.post('/create', multerProducts.any(), validator.productsUp, productsController.store);
-router.get('/sales', productsController.sales)
+router.post('/create', multerProducts.single('image'), validator.productsUp, productsController.store);
+router.get('/sales', productsController.sales);
 
 /*** GET ONE PRODUCT ***/
 router.get('/detail/:id', productsController.detail); // http://localhost:3000/products/detail/6
 
 /*** EDIT ONE PRODUCT ***/
 router.get('/edit/:id', auth, productsController.edit);
-router.put('/edit/:id', multerProducts.any(), validator.productsUp, productsController.update);
+router.put('/edit/:id', multerProducts.single('image'), validator.productsUp, productsController.update);
 
 /*** DELETE ONE PRODUCT***/
 router.delete('/delete/:id', auth, productsController.destroy);
